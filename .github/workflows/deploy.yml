@@ -34,14 +34,17 @@ jobs:
         run: |
           git config --global user.name $user_name
           git config --global user.email $user_email
-
-      - name: Deploy to Github Pages
-        run: npm run deploy
         env:
           user_name: 'github_actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
+
+      - name: Deploy to Github Pages
+        run: npm run deploy
+        # env:
+        #   user_name: 'github_actions[bot]'
+        #   user_email: 'github-actions[bot]@users.noreply.github.com'
+        #   github_token: ${{ secrets.GITHUB_TOKEN }}
+        #   repository: ${{ github.repository }}
 
 
       # - name: Run Build Script

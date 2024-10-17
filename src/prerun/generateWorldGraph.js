@@ -86,10 +86,8 @@ async function worldMapGraphBuilder() {
     const graph = {}
     const rootNode = "home";
     const toProcessQueue = [rootNode]
-    console.log('\n')
     while (toProcessQueue.length > 0) {
         const currentMap = toProcessQueue.shift()
-        process.stdout.write(`\r${toProcessQueue.length} - ${currentMap}`);
         const connectedMaps = await getConnectedMaps(currentMap)
         if (connectedMaps !== undefined) {
             for (let map of connectedMaps) {
@@ -130,7 +128,6 @@ async function getConnectedMaps(map) {
         return connectedMaps
     } catch (error) {
         console.error(error)
-        console.log('\n')
     }
 }
 

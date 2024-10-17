@@ -23,8 +23,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "generate-graph": "node src/prerun/generateWorldGraph.js",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build --repo https://x-access-token:${github_token}@github.com/milo-v/andorstrail-wayfinder.git"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

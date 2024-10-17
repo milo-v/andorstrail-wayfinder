@@ -40,11 +40,9 @@ jobs:
 
       - name: Deploy to Github Pages
         run: npm run deploy
-        # env:
-        #   user_name: 'github_actions[bot]'
-        #   user_email: 'github-actions[bot]@users.noreply.github.com'
-        #   github_token: ${{ secrets.GITHUB_TOKEN }}
-        #   repository: ${{ github.repository }}
+        env:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # repository: ${{ github.repository }}
 
 
       # - name: Run Build Script

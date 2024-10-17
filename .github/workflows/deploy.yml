@@ -30,12 +30,15 @@ jobs:
       - name: Remove data done processing
         run: rm -rf public/at-sources
 
-      - name: Run Build Script
-        run: npm run build
+      - name: Deploy to Github Pages
+        run: npm run deploy
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
-          publish_branch: gh_pages
+      # - name: Run Build Script
+      #   run: npm run build
+
+      # - name: Deploy to GitHub Pages
+      #   uses: peaceiris/actions-gh-pages@v4
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: ./build
+      #     publish_branch: gh_pages

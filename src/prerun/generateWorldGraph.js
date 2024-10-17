@@ -86,7 +86,7 @@ async function worldMapGraphBuilder() {
     const graph = {}
     const rootNode = "home";
     const toProcessQueue = [rootNode]
-    while (toProcessQueue.length > 0) {
+    while (toProcessQueue.length > 0 && toProcessQueue.length < 10) {
         const currentMap = toProcessQueue.shift()
         const connectedMaps = await getConnectedMaps(currentMap)
         if (connectedMaps !== undefined) {

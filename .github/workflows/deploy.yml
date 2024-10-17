@@ -31,13 +31,18 @@ jobs:
         run: rm -rf public/at-sources
 
       - name: Set github credentials
-        run: git config --global user.name "milo-v"
-
-      - name: Setup git remote
-        run: git remote add origin https://github.com/milo-v/andorstrail-wayfinder.git
+        run: |
+          git config --global user.name $user_name
+          git config --global user.email $user_email
 
       - name: Deploy to Github Pages
         run: npm run deploy
+        env:
+          user_name: 'github_actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+
 
       # - name: Run Build Script
       #   run: npm run build

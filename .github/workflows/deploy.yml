@@ -30,6 +30,9 @@ jobs:
       - name: Remove data done processing
         run: rm -rf public/at-sources
 
+      - name: Set github credentials
+        run: git config --global user.name "milo-v"
+
       - name: Deploy to Github Pages
         run: npm run deploy
 

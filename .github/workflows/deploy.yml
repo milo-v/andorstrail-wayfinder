@@ -27,6 +27,9 @@ jobs:
       - name: Generate map graph before run
         run: npm run generate-graph
 
+      - name: Remove data done processing
+        run: rm -rf public/at-sources
+
       - name: Run Build Script
         run: npm run build
 

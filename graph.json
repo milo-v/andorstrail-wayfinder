@@ -39,5 +39,41 @@
     "wild5",
     "bwmfill6",
     "bwmfill7"
+  ],
+  "ratdom_bwm1": [
+    "ratdom_maze3",
+    "crossglen",
+    "bwmfill3",
+    "bwmfill6",
+    "bwmfill2"
+  ],
+  "ratdom_maze1": [
+    "crossglen_cave",
+    "ratdom_maze2"
+  ],
+  "crossglen_farmhouse_basement": [
+    "crossglen_farmhouse"
+  ],
+  "gapfiller3": [
+    "wild1",
+    "wild3"
+  ],
+  "wild4": [
+    "wild1",
+    "hauntedhouse1"
+  ],
+  "wild0": [
+    "wild1",
+    "crossroads",
+    "woodcave1",
+    "woodcave0"
+  ],
+  "wild3": [
+    "gapfiller3",
+    "wild2",
+    "gapfiller4",
+    "jan_pitcave1",
+    "wild5",
+    "gapfiller2"
   ]
 }

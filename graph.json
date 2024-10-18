@@ -1,0 +1,43 @@
+{
+  "home": [
+    "crossglen"
+  ],
+  "crossglen": [
+    "crossglen_cave",
+    "crossglen_hall",
+    "crossglen_farmhouse",
+    "home",
+    "wild1",
+    "crossglen_smith",
+    "wild2",
+    "ratdom_bwm1"
+  ],
+  "crossglen_cave": [
+    "crossglen",
+    "ratdom_maze1"
+  ],
+  "crossglen_hall": [
+    "crossglen"
+  ],
+  "crossglen_farmhouse": [
+    "crossglen",
+    "crossglen_farmhouse_basement"
+  ],
+  "wild1": [
+    "crossglen",
+    "gapfiller3",
+    "wild4",
+    "wild0"
+  ],
+  "crossglen_smith": [
+    "crossglen"
+  ],
+  "wild2": [
+    "wild3",
+    "crossglen",
+    "snakecave1",
+    "wild5",
+    "bwmfill6",
+    "bwmfill7"
+  ]
+}

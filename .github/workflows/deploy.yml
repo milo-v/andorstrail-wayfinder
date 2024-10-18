@@ -1,0 +1,70 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Get map data
+        run: git clone -b v0.8.11 https://github.com/AndorsTrailRelease/andors-trail.git public/at-source/andors-trail
+
+      - name: Generate map graph before run
+        run: npm run generate-graph
+
+      - name: Remove data done processing
+        run: rm -rf public/at-source
+
+      - name: Set github credentials
+        run: |
+          git config --global user.name $user_name
+          git config --global user.email $user_email
+        env:
+          user_name: 'github_actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+
+      - name: CI
+        run: npm ci
+      # - name: build
+      #   run: npm run build --if-present
+
+      - name: Deploy to Github Pages
+        run: |
+          git remote set-url origin https://git:${github_token}@github.com/${repository}.git
+          npm run deploy
+        env:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+
+
+      # - name: Run Build Script
+      #   run: npm run build
+
+      # - name: Deploy to GitHub Pages
+      #   uses: peaceiris/actions-gh-pages@v4
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: ./build
+      #     publish_branch: gh-pages

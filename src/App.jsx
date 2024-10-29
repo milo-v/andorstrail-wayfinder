@@ -13,7 +13,7 @@ function App() {
   // Load graph from JSON file
   useEffect(() => {
     const loadGraph = async () => {
-      const response = await fetch('/graph.json');
+      const response = await fetch('graph.json');
       const data = await response.json();
       setGraph(data);
     };

@@ -8,6 +8,7 @@ function App() {
   const [startNode, setStartNode] = useState('');
   const [endNode, setEndNode] = useState('');
   const [result, setResult] = useState('');
+  const [nodeFilter, setNodeFilter] = useState('');
 
   // Load graph from JSON file
   useEffect(() => {
@@ -25,6 +26,14 @@ function App() {
     setResult(path);
   };
 
+  // Get all nodes from the graph
+  const allNodes = Object.keys(graph);
+
+  // Filter nodes based on the current input
+  const filteredNodes = allNodes.filter(node =>
+    node.toLowerCase().includes(nodeFilter.toLowerCase())
+  );
+
   return (
     <div className="App">
       {/* <GraphDisplay /> */}
@@ -35,20 +44,38 @@ function App() {
             Start Node:
             <input
               type="text"
-              value={startNode}
-              onChange={(e) => setStartNode(e.target.value)}
+              value={nodeFilter}
+              onChange={(e) => setNodeFilter(e.target.value)}
+              placeholder="Type to filter nodes"
             />
           </label>
+          <select value={startNode} onChange={(e) => setStartNode(e.target.value)}>
+            <option value="">Select Start Node</option>
+            {filteredNodes.map((node) => (
+              <option key={node} value={node}>
+                {node}
+              </option>
+            ))}
+          </select>
         </div>
         <div>
           <label>
             End Node:
             <input
               type="text"
-              value={endNode}
-              onChange={(e) => setEndNode(e.target.value)}
+              value={nodeFilter}
+              onChange={(e) => setNodeFilter(e.target.value)}
+              placeholder="Type to filter nodes"
             />
           </label>
+          <select value={endNode} onChange={(e) => setEndNode(e.target.value)}>
+            <option value="">Select End Node</option>
+            {filteredNodes.map((node) => (
+              <option key={node} value={node}>
+                {node}
+              </option>
+            ))}
+          </select>
         </div>
         <button onClick={handleFindPath}>Find Shortest Path</button>
         <h2>Result: {result}</h2>

@@ -37,7 +37,7 @@ function App() {
   );
 
   return (
-    <Router>
+    <Router basename='/andorstrail-wayfinder'>
       <div className="App">
         <Routes>
           <Route path='/combat-simulator' element={<CombatSimulatorPage/>}/>

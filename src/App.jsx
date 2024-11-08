@@ -1,7 +1,9 @@
 import './App.css';
 // import GraphDisplay from './components/GraphDisplay.jsx';
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { findShortestPath } from './scripts/bfs.js';
+import CombatSimulatorPage from './features/combat-simulator/CombatSimulatorPage.jsx';
 
 function App() {
   const [graph, setGraph] = useState({});
@@ -35,52 +37,57 @@ function App() {
   );
 
   return (
-    <div className="App">
-      {/* <GraphDisplay /> */}
-      <div>
-        <h1>Shortest Path Finder</h1>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path='/combat-simulator' element={<CombatSimulatorPage/>}/>
+        </Routes>
+        {/* <GraphDisplay /> */}
         <div>
-          <label>
-            Start Node:
-            <input
-              type="text"
-              value={nodeFilter}
-              onChange={(e) => setNodeFilter(e.target.value)}
-              placeholder="Type to filter nodes"
-            />
-          </label>
-          <select value={startNode} onChange={(e) => setStartNode(e.target.value)}>
-            <option value="">Select Start Node</option>
-            {filteredNodes.map((node) => (
-              <option key={node} value={node}>
-                {node}
-              </option>
-            ))}
-          </select>
+          <h1>Shortest Path Finder</h1>
+          <div>
+            <label>
+              Start Node:
+              <input
+                type="text"
+                value={nodeFilter}
+                onChange={(e) => setNodeFilter(e.target.value)}
+                placeholder="Type to filter nodes"
+              />
+            </label>
+            <select value={startNode} onChange={(e) => setStartNode(e.target.value)}>
+              <option value="">Select Start Node</option>
+              {filteredNodes.map((node) => (
+                <option key={node} value={node}>
+                  {node}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label>
+              End Node:
+              <input
+                type="text"
+                value={nodeFilter}
+                onChange={(e) => setNodeFilter(e.target.value)}
+                placeholder="Type to filter nodes"
+              />
+            </label>
+            <select value={endNode} onChange={(e) => setEndNode(e.target.value)}>
+              <option value="">Select End Node</option>
+              {filteredNodes.map((node) => (
+                <option key={node} value={node}>
+                  {node}
+                </option>
+              ))}
+            </select>
+          </div>
+          <button onClick={handleFindPath}>Find Shortest Path</button>
+          <h2>Result: {result}</h2>
         </div>
-        <div>
-          <label>
-            End Node:
-            <input
-              type="text"
-              value={nodeFilter}
-              onChange={(e) => setNodeFilter(e.target.value)}
-              placeholder="Type to filter nodes"
-            />
-          </label>
-          <select value={endNode} onChange={(e) => setEndNode(e.target.value)}>
-            <option value="">Select End Node</option>
-            {filteredNodes.map((node) => (
-              <option key={node} value={node}>
-                {node}
-              </option>
-            ))}
-          </select>
-        </div>
-        <button onClick={handleFindPath}>Find Shortest Path</button>
-        <h2>Result: {result}</h2>
       </div>
-    </div>
+      </Router>
   );
 }
 
